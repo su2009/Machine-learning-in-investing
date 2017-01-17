@@ -36,3 +36,17 @@ def test_run():
         
 if __name__ == "__main__":
     test_run()
+
+    
+## read same structure data in different files
+
+import pandas as pd
+
+def get_max_close(symbol):
+    df = pd.read_csv("data/{}.csv".format(symbol))  # file in the fold data, file names are AAPL.csv and IMB.csv
+    return df['Close'].max()
+
+def rest_run():
+    for symbol in ['AAPL','IBM']:
+        print "Max Close"
+        print symbol, get_max_close(symbol)
