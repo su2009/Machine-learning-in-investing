@@ -47,6 +47,8 @@ if __name__ == "__main__":
     
  """Slice and plot"""
 
+"""Slice and plot"""
+
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -56,7 +58,17 @@ def plot_selected(df, columns, start_index, end_index):
     """Plot the desired columns over index values in the given range."""
     # TODO: Your code here
     # Note: DO NOT modify anything else!
-    plot_data(df.ix[start_index:end_index,columns], title="Selected data")
+    plot_data(df.ix[start_index:end_index,columns], title="Selected Data")
+    
+
+def plot_normal(df, columns, start_index, end_index):
+    """Plot the desired columns over index values in the given range."""
+    # TODO: Your code here
+    # Note: DO NOT modify anything else!
+    df = df.ix[start_index:end_index,columns]
+    df = df / df.ix[0,]
+    plot_data(df, title = "Normalized Selected Data")
+
 
 
 def symbol_to_path(symbol, base_dir="data"):
@@ -101,7 +113,9 @@ def test_run():
 
     # Slice and plot
     plot_selected(df, ['SPY', 'IBM'], '2010-03-01', '2010-04-01')
-
+    
+    # Plot normalized data
+    plot_normal(df, ['SPY', 'IBM'], '2010-03-01', '2010-04-01')
 
 if __name__ == "__main__":
     test_run()
