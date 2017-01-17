@@ -119,3 +119,10 @@ def test_run():
 
 if __name__ == "__main__":
     test_run()
+
+ 
+
+# different amaong loc, iloc and ix
+
+http://stackoverflow.com/questions/31593201/pandas-iloc-vs-ix-vs-loc-explanation
+    
