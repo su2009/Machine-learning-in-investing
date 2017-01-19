@@ -83,3 +83,6 @@ def test_run():
 
 if __name__ == "__main__":
     test_run()
+    
+    
+#---- discussion on function rolling_mean https://discussions.udacity.com/t/rolling--is-deprecated/172494  
