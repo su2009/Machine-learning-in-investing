@@ -23,6 +23,29 @@ def fetch_data(symbol): #Not in course. Adding (mgill)
 
 
 def symbol_to_path(symbol, base_dir="data"):
+import urllib
+import os
+import pandas as pd
+import datetime
+import matplotlib.pyplot as plt
+
+
+def fetch_data(symbol): #Not in course. Adding (mgill)
+    """ Downloads .csv files for <symbols> from Yahoo Finance and saves them in 'data' directory. These are later picked up by rese of the program."""
+    
+    '''url = "http://ichart.finance.yahoo.com/table.csv?s="+symbol+\
+    "&amp;d=1&amp;e=1&amp;f=2016&amp;g=d&amp;a=8&amp;b=7&amp;c=2000&amp;ignore=.csv"
+    '''
+    time_frame = "d" # d -> daily, w -> weekly, m -> monthly.
+    url = "http://real-chart.finance.yahoo.com/table.csv?s="+symbol+\
+            "&a=11&b=22&c=1998&d=04&e=9&f=2016&g="+time_frame+"+&ignore=.csv"
+
+    urllib.urlretrieve(url, './data/{}.csv'.format(symbol))
+    print "DEBUG: Downloading for "+symbol
+    print "DEBUG: URL:"+url
+
+
+def symbol_to_path(symbol, base_dir="data"):
     """Return CSV file path given ticker symbol."""
     return os.path.join(base_dir, "{}.csv".format(str(symbol)))
 
@@ -41,13 +64,13 @@ def get_data(symbol, dates):
 
 def get_rolling_mean(values, window):
     """Return rolling mean of given values, using specified window size."""
-    return pd.rolling_mean(values, window=window)
+    return pd.rolling_mean(values, window)
 
 
 def get_rolling_std(values, window):
     """Return rolling standard deviation of given values, using specified window size."""
     # TODO: Compute and return rolling standard deviation
-    return pd.rolling_std(values, window=window)
+    return pd.rolling_std(values, window)
 
 
 def get_bollinger_bands(rm, rstd):
@@ -75,7 +98,7 @@ def test_run():
     end_date = datetime.date(year, month, day)
     dates = pd.date_range(start_date,end_date)
     
-    
+    window = int(raw_input("> how many days for the rolling window? please input an integer \n"))
     
     # fetch data
     fetch_data(symbol) #Download csv for symbol loading.
@@ -83,8 +106,8 @@ def test_run():
     
     
     # calculate bolling belt
-    rm = get_rolling_mean(df, window=20)
-    rstd = get_rolling_std(df, window=20)
+    rm = get_rolling_mean(df, window)
+    rstd = get_rolling_std(df, window)
     upband, lowband = get_bollinger_bands(rm, rstd)
     
     # Plot raw SPY values, rolling mean and Bollinger Bands
