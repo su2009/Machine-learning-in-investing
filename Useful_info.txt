@@ -1,0 +1,6 @@
+market data
+
+http://quantpedia.com/Links/HistoricalData
+https://blog.quandl.com/stock-market-data-guide
+http://quant.stackexchange.com/questions/141/what-data-sources-are-available-online
+https://www.quantopian.com/data
