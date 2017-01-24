@@ -26,29 +26,6 @@ def fetch_data(symbol): #Not in course. Adding (mgill)
 
 
 def symbol_to_path(symbol, base_dir="data"):
-import urllib
-import os
-import pandas as pd
-import datetime
-import matplotlib.pyplot as plt
-
-
-def fetch_data(symbol): #Not in course. Adding (mgill)
-    """ Downloads .csv files for <symbols> from Yahoo Finance and saves them in 'data' directory. These are later picked up by rese of the program."""
-    
-    '''url = "http://ichart.finance.yahoo.com/table.csv?s="+symbol+\
-    "&amp;d=1&amp;e=1&amp;f=2016&amp;g=d&amp;a=8&amp;b=7&amp;c=2000&amp;ignore=.csv"
-    '''
-    time_frame = "d" # d -> daily, w -> weekly, m -> monthly.
-    url = "http://real-chart.finance.yahoo.com/table.csv?s="+symbol+\
-            "&a=11&b=22&c=1998&d=04&e=9&f=2016&g="+time_frame+"+&ignore=.csv"
-
-    urllib.urlretrieve(url, './data/{}.csv'.format(symbol))
-    print "DEBUG: Downloading for "+symbol
-    print "DEBUG: URL:"+url
-
-
-def symbol_to_path(symbol, base_dir="data"):
     """Return CSV file path given ticker symbol."""
     return os.path.join(base_dir, "{}.csv".format(str(symbol)))
 
